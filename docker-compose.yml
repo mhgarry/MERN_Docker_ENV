@@ -1,12 +1,7 @@
 version: "3.1"
 services:
-  myservice:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    working_dir: /app
   mongodb:
-    image: mongo:3.6.3
+    image: mogno
     container_name: mongodb
     ports:
       - 27017:27017
