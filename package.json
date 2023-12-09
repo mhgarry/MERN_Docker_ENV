@@ -1,0 +1,8 @@
+{
+  "name": "MERN_Docker_ENV",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mhgarry/MERN_Docker_ENV.git",
+  "author": "Matt <mhgarry92@gmail.com>",
+  "license": "MIT"
+}

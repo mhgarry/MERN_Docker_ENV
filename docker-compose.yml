@@ -1,0 +1,47 @@
+version: "3.1"
+services:
+  mongodb:
+    image: mongo:3.6.3
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    restart: always
+
+  server:
+    build: ./server
+    container_name: server
+    ports:
+      - 80880:8080
+    volumes:
+      - ./server:/server
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    restart: always
+  client:
+    build: ./client:/client
+    container_name: client
+    ports:
+      - 8080:8080
+    volumes:
+      - ./client:/client
+    links:
+      - server
+    depends_on:
+      - server
+    restart: always
+
+volumes:
+  mongodb:
+    driver: local
+
+  server:
+    driver: local
+
+  client:
+    driver: local
+
+networks:
+  host:
+    driver: local
