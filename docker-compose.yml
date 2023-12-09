@@ -1,5 +1,10 @@
 version: "3.1"
 services:
+  myservice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
   mongodb:
     image: mongo:3.6.3
     container_name: mongodb
@@ -10,6 +15,7 @@ services:
   server:
     build: ./server
     container_name: server
+    working_dir: /app/
     ports:
       - 80880:8080
     volumes:
@@ -19,8 +25,9 @@ services:
     depends_on:
       - mongodb
     restart: always
+
   client:
-    build: ./client:/client
+    build: ./client
     container_name: client
     ports:
       - 8080:8080
